@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="day">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shahmeer Hassan — AI Engineer</title>
+<meta name="description" content="Shahmeer Hassan — AI Engineer specializing in machine learning, computer vision, and generative AI.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230B6E4F'/%3E%3Ctext x='50%25' y='56%25' font-family='Georgia,serif' font-size='30' fill='%23F4F5F1' text-anchor='middle'%3ESH%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shahmeer Hassan — AI Engineer">
+<meta property="og:description" content="Machine learning, deep learning, computer vision & generative AI — built with a growth-driven, hands-on approach from Punjab, Pakistan.">
+<!-- og:image needs an absolute URL once this site is hosted somewhere (e.g. https://yourdomain.com/preview.png) — a 1200x630 image works best. Uncomment once you have one:
+<meta property="og:image" content="https://yourdomain.com/preview.png"> -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Shahmeer Hassan — AI Engineer">
+<meta name="twitter:description" content="Machine learning, deep learning, computer vision & generative AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ --max:660px; }
+
+  html[data-theme="day"]{
+    --bg:#F4F5F1; --bg-rgb:244,245,241; --bg-raised:#EAECE3;
+    --ink:#12151A; --ink-soft:#565D63;
+    --accent:#0B6E4F; --accent-rgb:11,110,79;
+    --accent-2:#C2410C; --accent-2-rgb:194,65,12;
+    --line:#DBDED4; --topbar-bg:rgba(244,245,241,0.78);
+    --glass-border:rgba(20,23,26,0.12); --blob-op:.30;
+    --glass-spec:rgba(255,255,255,0.55); --glass-tint:255,255,255;
+  }
+  html[data-theme="night"]{
+    --bg:#0B0E13; --bg-rgb:11,14,19; --bg-raised:#141920;
+    --ink:#EDEFEC; --ink-soft:#9AA2AB;
+    --accent:#F4B740; --accent-rgb:244,183,64;
+    --accent-2:#33D2A8; --accent-2-rgb:51,210,168;
+    --line:#232A33; --topbar-bg:rgba(11,14,19,0.80);
+    --glass-border:rgba(255,255,255,0.10); --blob-op:.24;
+    --glass-spec:rgba(255,255,255,0.16); --glass-tint:255,255,255;
+  }
+  html[data-theme="aurora"]{
+    --bg:#120E24; --bg-rgb:18,14,36; --bg-raised:#1C1638;
+    --ink:#F1EEFB; --ink-soft:#B3ABDA;
+    --accent:#9C7BFF; --accent-rgb:156,123,255;
+    --accent-2:#33F2D6; --accent-2-rgb:51,242,214;
+    --line:#2E2757; --topbar-bg:rgba(18,14,36,0.68);
+    --glass-border:rgba(255,255,255,0.16); --blob-op:.46;
+    --glass-spec:rgba(200,180,255,0.22); --glass-tint:156,123,255;
+  }
+  html[data-theme="sunset"]{
+    --bg:#210E14; --bg-rgb:33,14,20; --bg-raised:#2C1620;
+    --ink:#FBEAE2; --ink-soft:#D2A79B;
+    --accent:#FF5A5F; --accent-rgb:255,90,95;
+    --accent-2:#FFC24B; --accent-2-rgb:255,194,75;
+    --line:#3C1D28; --topbar-bg:rgba(33,14,20,0.68);
+    --glass-border:rgba(255,255,255,0.16); --blob-op:.42;
+    --glass-spec:rgba(255,210,180,0.22); --glass-tint:255,194,75;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    transition:background .4s ease, color .4s ease;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{ font-family:'Fraunces', serif; font-weight:500; letter-spacing:-0.01em; }
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  a{color:var(--accent); text-decoration:none;}
+  a:hover{opacity:.75;}
+
+  /* ---- Ambient background blobs (for the glass effect to catch) ---- */
+  .ambient{ position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none; }
+  .ambient .blob{ position:absolute; border-radius:50%; filter:blur(90px); opacity:var(--blob-op); transition:background .4s ease, opacity .4s ease; }
+  .blob.a{ width:460px; height:460px; background:rgb(var(--accent-rgb)); top:-140px; left:-120px; }
+  .blob.b{ width:400px; height:400px; background:rgb(var(--accent-2-rgb)); top:38%; right:-160px; }
+  .blob.c{ width:380px; height:380px; background:rgb(var(--accent-rgb)); bottom:-140px; left:20%; }
+
+  /* ---- Top bar ---- */
+  header.topbar{
+    position:fixed; top:0; left:0; right:0;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 32px; z-index:50;
+    backdrop-filter:blur(14px) saturate(160%); -webkit-backdrop-filter:blur(14px) saturate(160%);
+    background:var(--topbar-bg);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s ease, background .4s ease;
+  }
+  header.topbar.scrolled{border-bottom-color:var(--line);}
+  .brand{ font-family:'Fraunces', serif; font-size:1.05rem; font-weight:500; }
+  .topbar-right{display:flex; align-items:center; gap:22px;}
+  nav.top-links{display:flex; gap:24px;}
+  nav.top-links a{ color:var(--ink-soft); font-size:0.88rem; }
+  nav.top-links a:hover{color:var(--ink); opacity:1;}
+
+  .theme-switch{display:flex; gap:9px; align-items:center; padding:6px 10px; border:1px solid var(--line); border-radius:20px;}
+  .theme-switch button{
+    width:15px; height:15px; border-radius:50%; padding:0; cursor:pointer;
+    background:var(--sw); border:2px solid transparent;
+    transition:transform .2s ease, border-color .2s ease;
+  }
+  .theme-switch button:hover{transform:scale(1.2);}
+  .theme-switch button.active{border-color:var(--ink); transform:scale(1.15);}
+
+  .menu-btn{ display:none; background:none; border:none; color:var(--ink); font-size:1.3rem; cursor:pointer; }
+
+  .mobile-menu{
+    display:none; position:fixed; top:0; left:0; right:0; bottom:0;
+    background:var(--bg); z-index:60; flex-direction:column;
+    padding:100px 32px 40px; gap:22px; overflow-y:auto;
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{color:var(--ink-soft); font-size:1.3rem; font-family:'Fraunces', serif;}
+  .mobile-menu a:hover{color:var(--ink);}
+  .mobile-menu-close{
+    display:none; position:fixed; top:20px; right:32px; z-index:61;
+    background:none; border:none; color:var(--ink); font-size:1.5rem; cursor:pointer;
+  }
+  body.menu-open{overflow:hidden;}
+  body.menu-open .mobile-menu-close{display:block;}
+
+  /* ---- dot nav ---- */
+  .dotnav{ position:fixed; right:28px; top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:16px; z-index:40; }
+  .dotnav a{ width:8px; height:8px; border-radius:50%; background:var(--line); display:block; position:relative; transition:background .2s ease, transform .2s ease; }
+  .dotnav a:hover{transform:scale(1.3);}
+  .dotnav a.active{background:var(--accent); transform:scale(1.4);}
+  .dotnav a .label{
+    position:absolute; right:20px; top:50%; transform:translateY(-50%);
+    font-family:'IBM Plex Mono', monospace; font-size:0.72rem; color:var(--ink-soft);
+    white-space:nowrap; opacity:0; pointer-events:none; transition:opacity .15s ease;
+  }
+  .dotnav a:hover .label{opacity:1;}
+
+  @media (max-width: 980px){ .dotnav{display:none;} }
+  @media (max-width: 700px){
+    nav.top-links{display:none;}
+    .menu-btn{display:block;}
+  }
+
+  /* ---- Hero ---- */
+  .hero{ min-height:92vh; display:flex; flex-direction:column; justify-content:center; max-width:820px; margin:0 auto; padding:120px 32px 60px; position:relative; }
+  .hero-net{ position:absolute; top:0; right:-8%; width:64%; height:100%; z-index:0; opacity:.5; pointer-events:none; }
+  .hero-net line{stroke:var(--accent); stroke-width:1; opacity:.35;}
+  .hero-net circle{fill:var(--accent);}
+  .hero-inner{position:relative; z-index:1;}
+
+  .eyebrow-line{
+    font-family:'IBM Plex Mono', monospace; font-size:0.82rem; color:var(--accent-2);
+    margin-bottom:18px; display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow-line::before{ content:''; width:26px; height:1px; background:var(--accent-2); }
+  .status-line{
+    display:inline-flex; align-items:center; gap:8px; margin-bottom:22px;
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--ink-soft);
+    border:1px solid var(--line); border-radius:20px; padding:6px 14px 6px 10px; width:fit-content;
+  }
+  .status-dot{ width:7px; height:7px; border-radius:50%; background:#3BC46B; position:relative; flex:none; }
+  .status-dot::after{
+    content:''; position:absolute; inset:-4px; border-radius:50%; background:#3BC46B;
+    opacity:.5; animation:statusPulse 2.2s ease-out infinite;
+  }
+  @keyframes statusPulse{ 0%{transform:scale(.6); opacity:.5;} 100%{transform:scale(2.1); opacity:0;} }
+  @media (prefers-reduced-motion: reduce){ .status-dot::after{animation:none;} }
+  .hero h1{ font-size:clamp(2.6rem, 6vw, 4.4rem); line-height:1.02; margin-bottom:22px; }
+  #typed{border-right:2px solid var(--accent); padding-right:3px;}
+  .hero-sub{ color:var(--ink-soft); font-size:1.08rem; max-width:520px; margin-bottom:30px; }
+  .pipeline{display:flex; flex-wrap:wrap; align-items:center; gap:0; margin-bottom:34px;}
+  .pipeline .node{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
+    background:var(--bg-raised); border:1px solid var(--line);
+    padding:6px 13px; border-radius:3px; white-space:nowrap;
+    transition:background .3s ease, border-color .3s ease, transform .25s ease, box-shadow .25s ease;
+  }
+  .pipeline .node:hover{
+    background:rgba(var(--bg-rgb), 0.45);
+    backdrop-filter:blur(14px) saturate(160%); -webkit-backdrop-filter:blur(14px) saturate(160%);
+    border-color:var(--glass-border);
+    box-shadow:0 8px 24px rgba(0,0,0,.15);
+    transform:translateY(-2px);
+  }
+  .pipeline .arrow{color:var(--accent); padding:0 9px; font-size:.9rem;}
+  .hero-links{display:flex; gap:24px; align-items:center; flex-wrap:wrap;}
+  .hero-links a{ font-size:0.92rem; font-weight:500; border-bottom:1px solid var(--line); padding-bottom:2px; }
+  .resume-btn{
+    border:1px solid var(--accent) !important; border-radius:20px; padding:8px 18px !important;
+    color:var(--accent); background:rgba(var(--accent-rgb),0.08);
+    transition:background .25s ease, transform .25s ease;
+  }
+  .resume-btn:hover{ background:rgba(var(--accent-rgb),0.16); transform:translateY(-2px); opacity:1; }
+  .hero-photo{
+    width:104px; height:104px; border-radius:50%; position:relative; overflow:hidden;
+    border:1.5px solid var(--accent); margin-bottom:26px; background:var(--bg-raised);
+  }
+  .hero-photo img{width:100%; height:100%; object-fit:cover; display:block; position:relative; z-index:2;}
+  .hero-photo .initials{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-size:1.6rem; line-height:1; color:var(--accent); z-index:1;
+  }
+
+  /* ---- Sections ---- */
+  main{max-width:var(--max); margin:0 auto; padding:0 32px;}
+  section{padding:70px 0; border-top:1px solid var(--line);}
+  section:first-of-type{border-top:none;}
+  .eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--accent); margin-bottom:10px; }
+  section h2{font-size:1.7rem; margin-bottom:26px; font-weight:500;}
+  .about p{margin-bottom:16px; color:var(--ink);}
+
+  /* reveal-on-scroll */
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+
+  /* ---- Liquid glass hover panels (iOS 26 style) ---- */
+  .glass{
+    --px:50%; --py:40%; --rx:0deg; --ry:0deg;
+    position:relative;
+    border-radius:18px; border:1px solid transparent;
+    padding:22px 18px; margin:0 -18px;
+    transform:perspective(900px) rotateX(0) rotateY(0) translateY(0);
+    transition:background .4s ease, backdrop-filter .4s ease, box-shadow .45s cubic-bezier(.2,.8,.2,1),
+               transform .45s cubic-bezier(.2,.8,.2,1), border-color .4s ease;
+    isolation:isolate;
+  }
+  .glass::before{
+    /* specular highlight that tracks the cursor */
+    content:''; position:absolute; inset:0; border-radius:inherit;
+    background:radial-gradient(circle at var(--px) var(--py), var(--glass-spec), transparent 55%);
+    opacity:0; transition:opacity .5s ease; pointer-events:none; z-index:1;
+  }
+  .glass::after{
+    /* refracted edge — thin light rim that leans toward the cursor */
+    content:''; position:absolute; inset:0; border-radius:inherit; padding:1px;
+    background:conic-gradient(from calc(var(--px) * 1deg) at var(--px) var(--py),
+      rgba(var(--glass-tint),0.55), transparent 30%, transparent 70%, rgba(var(--glass-tint),0.35));
+    -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor; mask-composite:exclude;
+    opacity:0; transition:opacity .5s ease; pointer-events:none; z-index:1;
+  }
+  .glass:hover{
+    background:rgba(var(--bg-rgb), 0.5);
+    backdrop-filter:blur(26px) saturate(200%); -webkit-backdrop-filter:blur(26px) saturate(200%);
+    border-color:var(--glass-border);
+    box-shadow:0 20px 50px rgba(0,0,0,0.20), inset 0 1px 0 rgba(255,255,255,0.12);
+    transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(-6px) scale(1.012);
+  }
+  .glass:hover::before, .glass:hover::after{ opacity:1; }
+  @media (hover: none){
+    .glass::before, .glass::after{ display:none; }
+  }
+
+  .exp-item{margin-bottom:14px; padding-left:22px; border-left:1.5px solid var(--line); position:relative;}
+  .exp-item::before{ content:''; position:absolute; left:-5px; top:27px; width:9px; height:9px; border-radius:50%; background:var(--accent); }
+  .exp-item .role{font-weight:600; font-size:1.05rem;}
+  .exp-item .org{color:var(--ink-soft); font-size:0.95rem;}
+  .exp-item .dates{font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--ink-soft); display:block; margin-top:4px;}
+  .exp-item ul{margin-top:12px; padding-left:18px;}
+  .exp-item li{font-size:0.92rem; color:var(--ink-soft); margin-bottom:6px; line-height:1.5;}
+
+  .project{border-bottom:1px solid var(--line);}
+  .project:last-child{border-bottom:none;}
+  .project-head{display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; align-items:baseline; margin-bottom:8px;}
+  .project-head h3{font-size:1.14rem; font-weight:500;}
+  .project-head .dates{font-family:'IBM Plex Mono', monospace; font-size:0.74rem; color:var(--ink-soft);}
+  .project p{color:var(--ink-soft); font-size:0.96rem; margin-bottom:12px;}
+  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:10px;}
+  .tags span{font-size:0.75rem; color:var(--accent); border:1px solid var(--line); padding:3px 10px; border-radius:20px;}
+  .project .collab{font-size:0.82rem; color:var(--ink-soft);}
+  .project .repo-link{font-size:0.85rem;}
+
+  .cert{display:flex; justify-content:space-between; flex-wrap:wrap; gap:4px; border-top:1px solid var(--line);}
+  .cert:first-child{border-top:none;}
+  .cert .name{font-weight:500; font-size:0.97rem;}
+  .cert .issuer{color:var(--ink-soft); font-size:0.85rem;}
+  .cert .right{text-align:right; font-family:'IBM Plex Mono', monospace; font-size:0.7rem; color:var(--ink-soft);}
+
+  .skills-grid{display:flex; flex-wrap:wrap; gap:30px 40px;}
+  .skill-cat{width:calc(50% - 20px);}
+  .skill-cat h4{font-size:0.83rem; color:var(--accent-2); font-family:'IBM Plex Mono', monospace; margin-bottom:12px; font-weight:500;}
+  .skill-cat ul{list-style:none;}
+  .skill-cat li{font-size:0.93rem; padding:5px 0 5px 16px; border-bottom:1px dotted var(--line); position:relative;}
+  .skill-cat li::before{content:''; position:absolute; left:0; top:13px; width:5px; height:5px; border-radius:50%; background:var(--accent);}
+
+  .edu.glass + .edu.glass{margin-top:18px;}
+  .edu .role{font-weight:600; font-size:1.05rem;}
+  .edu .org{color:var(--ink-soft); margin-bottom:2px;}
+  .edu .dates{font-family:'IBM Plex Mono', monospace; font-size:0.76rem; color:var(--ink-soft);}
+
+  .contact-row{display:flex; gap:28px; flex-wrap:wrap; margin-top:16px;}
+  .contact-row a{font-size:1rem; border-bottom:1px solid var(--line); padding-bottom:2px;}
+  footer{max-width:var(--max); margin:0 auto; padding:40px 32px 60px; color:var(--ink-soft); font-size:0.8rem;}
+
+  @media (max-width: 700px){
+    .hero{padding:110px 20px 50px;}
+    main{padding:0 20px;}
+    .skill-cat{width:100%;}
+    .hero-net{width:100%; right:-20%; opacity:.35;}
+    .glass{margin:0 -12px; padding:18px 12px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    #typed{border-right:none;}
+    .reveal{opacity:1; transform:none; transition:none;}
+    .glass{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="ambient"><div class="blob a"></div><div class="blob b"></div><div class="blob c"></div></div>
+
+<header class="topbar" id="topbar">
+  <div class="brand">Shahmeer Hassan</div>
+  <div class="topbar-right">
+    <nav class="top-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certs</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="theme-switch" id="themeSwitch">
+      <button data-t="day" style="--sw:#0B6E4F" title="Day" aria-label="Day theme"></button>
+      <button data-t="night" style="--sw:#F4B740" title="Night" aria-label="Night theme"></button>
+      <button data-t="aurora" style="--sw:#9C7BFF" title="Aurora" aria-label="Aurora theme"></button>
+      <button data-t="sunset" style="--sw:#FF5A5F" title="Sunset" aria-label="Sunset theme"></button>
+    </div>
+    <button class="menu-btn" id="menuBtn">☰</button>
+  </div>
+</header>
+
+<button class="mobile-menu-close" id="menuCloseBtn" aria-label="Close menu">✕</button>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">About</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#certifications">Certifications</a>
+  <a href="#skills">Skills</a>
+  <a href="#education">Education</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<nav class="dotnav" id="dotnav">
+  <a href="#about" data-id="about"><span class="label">About</span></a>
+  <a href="#experience" data-id="experience"><span class="label">Experience</span></a>
+  <a href="#projects" data-id="projects"><span class="label">Projects</span></a>
+  <a href="#certifications" data-id="certifications"><span class="label">Certifications</span></a>
+  <a href="#skills" data-id="skills"><span class="label">Skills</span></a>
+  <a href="#education" data-id="education"><span class="label">Education</span></a>
+  <a href="#contact" data-id="contact"><span class="label">Contact</span></a>
+</nav>
+
+<section class="hero">
+  <svg class="hero-net" viewBox="0 0 500 600" preserveAspectRatio="xMidYMid meet">
+    <g id="netLines"></g>
+    <g id="netDots"></g>
+  </svg>
+  <div class="hero-inner">
+    <!-- To use your own photo: place a file named "photo.jpg" in this same folder. It will replace the initials automatically. -->
+    <div class="hero-photo">
+      <span class="initials">SH</span>
+      <img src="photo.jpg" alt="Shahmeer Hassan" onerror="this.style.display='none'">
+    </div>
+    <div class="eyebrow-line">AI Engineer</div>
+    <h1><span id="typed">Shahmeer Hassan</span></h1>
+    <div class="status-line"><span class="status-dot"></span>Currently: ML Intern at FlyRank AI · open to new opportunities</div>
+    <p class="hero-sub">Machine learning, deep learning, computer vision &amp; generative AI — built with a growth-driven, hands-on approach from Chakwal, Punjab, Pakistan.</p>
+    <div class="pipeline">
+      <span class="node">data</span><span class="arrow">→</span>
+      <span class="node">model</span><span class="arrow">→</span>
+      <span class="node">evaluation</span><span class="arrow">→</span>
+      <span class="node">deployment</span>
+    </div>
+    <div class="hero-links">
+      <a href="https://www.linkedin.com/in/shahmeer-hassan-39584425b" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/Shahmeer01-ai" target="_blank" rel="noopener">GitHub</a>
+      <!-- Place a file named "resume.pdf" in this same folder for this button to download it. -->
+      <a class="resume-btn" href="resume.pdf" download>Download Resume</a>
+    </div>
+  </div>
+</section>
+
+<main>
+  <section id="about" class="reveal">
+    <div class="eyebrow">About</div>
+    <h2>Who I am</h2>
+    <div class="about glass">
+      <p>I'm an undergraduate student of Artificial Intelligence at HITEC University, Taxila, driven by a strong interest in building intelligent, data-driven solutions. Through my academic journey, I've developed practical experience in machine learning, neural networks, and solving real-world problems using AI techniques.</p>
+      <p>I'm passionate about exploring emerging technologies and continuously improving my skill set — with a proactive, growth-oriented mindset aimed at gaining hands-on industry experience, collaborating on impactful projects, and contributing to solutions that make a meaningful difference.</p>
+    </div>
+  </section>
+
+  <section id="experience" class="reveal">
+    <div class="eyebrow">Experience</div>
+    <h2>Where I've worked</h2>
+    <div class="exp-item glass">
+      <div class="role">Machine Learning Intern</div>
+      <div class="org">FlyRank AI · Internship</div>
+      <span class="dates">Aug 2026 – Present · Islamabad, Pakistan · Remote</span>
+    </div>
+    <div class="exp-item glass">
+      <div class="role">Machine Learning Engineer</div>
+      <div class="org">Digital Empowerment Network · Internship</div>
+      <span class="dates">Jul 2025 – Sep 2025 · Islamabad, Pakistan · Remote</span>
+      <ul>
+        <li>Developed and tested machine learning models for real-world applications</li>
+        <li>Preprocessed and cleaned datasets for training and validation</li>
+        <li>Collaborated remotely with team members on project timelines</li>
+        <li>Documented model performance and presented findings</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects" class="reveal">
+    <div class="eyebrow">Projects</div>
+    <h2>What I've built</h2>
+
+    <div class="project glass">
+      <div class="project-head">
+        <h3>Clustering &amp; Dimensionality Reduction — Mall Customer Segmentation</h3>
+        <span class="dates">Jul 2025 – Aug 2025</span>
+      </div>
+      <p>Applied clustering techniques and dimensionality reduction to segment mall customers into distinct groups, an unsupervised learning project focused on uncovering hidden structure in customer data.</p>
+      <div class="tags"><span>Clustering</span><span>Dimensionality Reduction</span><span>Project Management</span></div>
+      <a class="repo-link" href="https://github.com/Shahmeer01-ai" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+
+    <div class="project glass">
+      <div class="project-head">
+        <h3>AI Language Translator with Text-to-Speech (TTS)</h3>
+        <span class="dates">May 2025 – Jun 2025</span>
+      </div>
+      <p>A Python desktop application translating text into 8+ languages with audio playback, built with Tkinter, the Google Translator API, and gTTS for speech synthesis.</p>
+      <div class="tags"><span>Python</span><span>Tkinter</span><span>gTTS</span></div>
+      <a class="repo-link" href="https://github.com/Shahmeer01-ai/AI-Based-Translator" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+
+    <div class="project glass">
+      <div class="project-head"><h3>FaceTrack-AI</h3></div>
+      <p>A real-time face detection and recognition system built with Python and OpenCV. Captures facial data via webcam, trains a recognition model, and performs live face identification using Haar Cascade classifiers.</p>
+      <div class="tags"><span>OpenCV</span><span>Facial Recognition</span><span>Computer Vision</span></div>
+      <a class="repo-link" href="https://github.com/Shahmeer01-ai/FaceTrack-AI" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+
+    <div class="project glass">
+      <div class="project-head"><h3>Military Base Threat Assessment System</h3></div>
+      <p>A rule-based expert system for assessing air, ground, and cyber threats using forward and backward chaining, built with Python and Tkinter and including an ontology graph visualization.</p>
+      <div class="tags"><span>Knowledge Representation</span><span>Logic-based Reasoning</span></div>
+      <a class="repo-link" href="https://github.com/Shahmeer01-ai/military-threat-assessment" target="_blank" rel="noopener">View on GitHub →</a>
+    </div>
+  </section>
+
+  <section id="certifications" class="reveal">
+    <div class="eyebrow">Certifications</div>
+    <h2>Licenses &amp; certifications</h2>
+    <div class="cert glass">
+      <div><div class="name">AI Fluency Program</div><div class="issuer">FlyRank AI · Artificial Intelligence, Generative AI</div></div>
+      <div class="right">Sep 2026<br>FR-D11-40FE9-573F9</div>
+    </div>
+    <div class="cert glass">
+      <div><div class="name">Maximize Productivity With AI Tools</div><div class="issuer">Google &amp; Coursera · AI Tools &amp; Automation</div></div>
+      <div class="right">Aug 2026<br>2PVWL7R3WYBF</div>
+    </div>
+    <div class="cert glass">
+      <div><div class="name">Foundations: Data, Data, Everywhere</div><div class="issuer">Google · Data Analytics, Data Visualization</div></div>
+      <div class="right">Jun 2026<br><a href="https://coursera.org/verify/1CAX1JVZCHMC" target="_blank" rel="noopener">1CAX1JVZCHMC</a></div>
+    </div>
+    <div class="cert glass">
+      <div><div class="name">Exploratory Data Analysis for Machine Learning</div><div class="issuer">IBM · Machine Learning</div></div>
+      <div class="right"><a href="https://coursera.org/verify/G6OUYGDJYF9" target="_blank" rel="noopener">G6OUYGDJYF9</a></div>
+    </div>
+    <div class="cert glass">
+      <div><div class="name">Advanced Learning Algorithms</div><div class="issuer">DeepLearning.AI &amp; Stanford University · Deep Learning, Machine Learning</div></div>
+      <div class="right">30 Jan 2026<br><a href="https://coursera.org/verify/NTS384R4N0RW" target="_blank" rel="noopener">NTS384R4N0RW</a></div>
+    </div>
+    <div class="cert glass">
+      <div><div class="name">Supervised Machine Learning: Regression and Classification</div><div class="issuer">DeepLearning.AI · Linear Regression</div></div>
+      <div class="right">Jan 2026<br>27YGGD1XPR3R</div>
+    </div>
+  </section>
+
+  <section id="skills" class="reveal">
+    <div class="eyebrow">Skills</div>
+    <h2>What I work with</h2>
+    <div class="skills-grid">
+      <div class="skill-cat glass">
+        <h4>AI &amp; Machine Learning</h4>
+        <ul>
+          <li>Machine Learning</li><li>Deep Learning</li><li>Computer Vision</li>
+          <li>Generative AI</li><li>Supervised Learning</li><li>Linear Regression</li><li>Clustering</li>
+        </ul>
+      </div>
+      <div class="skill-cat glass">
+        <h4>Languages</h4>
+        <ul>
+          <li>Python</li><li>JavaScript</li><li>SQL</li><li>Java</li><li>C++</li><li>HTML</li>
+        </ul>
+      </div>
+      <div class="skill-cat glass">
+        <h4>Tools &amp; Libraries</h4>
+        <ul>
+          <li>OpenCV</li><li>Scikit-Learn</li><li>TensorFlow</li><li>Pandas</li>
+          <li>NumPy</li><li>Matplotlib</li><li>Tkinter</li><li>Facial Recognition</li>
+        </ul>
+      </div>
+      <div class="skill-cat glass">
+        <h4>Data &amp; Other</h4>
+        <ul>
+          <li>Data Analytics</li><li>Data Visualization</li><li>Database Management</li>
+          <li>Knowledge Representation &amp; Reasoning</li><li>Project Management</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="reveal">
+    <div class="eyebrow">Education</div>
+    <h2>Academic background</h2>
+    <div class="edu glass">
+      <div class="role">HITEC University</div>
+      <div class="org">Bachelor of Science in Artificial Intelligence</div>
+      <div class="dates">Sep 2023 – Jul 2027 · Taxila, Pakistan</div>
+    </div>
+    <div class="edu glass">
+      <div class="role">Kalar Kahar Science College</div>
+      <div class="org">Intermediate in Pre-Engineering (FSc)</div>
+      <div class="dates">Jul 2021 – Jun 2023 · Chakwal, Pakistan</div>
+    </div>
+  </section>
+
+  <section id="contact" class="reveal">
+    <div class="eyebrow">Contact</div>
+    <h2>Get in touch</h2>
+    <p style="color:var(--ink-soft); max-width:480px;">Open to machine learning and AI engineering opportunities, collaborations, and interesting problems to work on.</p>
+    <div class="contact-row">
+      <a href="mailto:hassanshahmeer011@gmail.com">hassanshahmeer011@gmail.com</a>
+      <a href="tel:+923158152023">+92 315 8152023</a>
+      <a href="https://wa.me/923158152023" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.linkedin.com/in/shahmeer-hassan-39584425b" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="https://github.com/Shahmeer01-ai" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </section>
+
+  <footer>Built by Shahmeer Hassan.</footer>
+</main>
+
+<script>
+  // Top bar shadow on scroll
+  var topbar = document.getElementById('topbar');
+  window.addEventListener('scroll', function(){
+    topbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // Mobile menu toggle
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileMenu = document.getElementById('mobileMenu');
+  var menuCloseBtn = document.getElementById('menuCloseBtn');
+  function openMenu(){ mobileMenu.classList.add('open'); document.body.classList.add('menu-open'); }
+  function closeMenu(){ mobileMenu.classList.remove('open'); document.body.classList.remove('menu-open'); }
+  menuBtn.addEventListener('click', function(){
+    mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  menuCloseBtn.addEventListener('click', closeMenu);
+  Array.prototype.forEach.call(mobileMenu.querySelectorAll('a'), function(a){
+    a.addEventListener('click', closeMenu);
+  });
+
+  // Theme switch (in-memory only, resets on reload)
+  var themeButtons = document.querySelectorAll('#themeSwitch button');
+  function setTheme(name){
+    document.documentElement.setAttribute('data-theme', name);
+    themeButtons.forEach(function(b){ b.classList.toggle('active', b.dataset.t === name); });
+  }
+  themeButtons.forEach(function(btn){
+    btn.addEventListener('click', function(){ setTheme(btn.dataset.t); });
+  });
+  setTheme('day');
+
+  // Scrollspy dot nav
+  var dots = document.querySelectorAll('.dotnav a');
+  var navSections = document.querySelectorAll('main section, .hero');
+  var spy = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        var id = entry.target.id;
+        dots.forEach(function(d){ d.classList.toggle('active', d.dataset.id === id); });
+      }
+    });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  navSections.forEach(function(s){ if (s.id) spy.observe(s); });
+
+  var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Typewriter for hero headline (single run)
+  var typedEl = document.getElementById('typed');
+  var fullText = "Shahmeer Hassan";
+  if (!prefersReduced) {
+    typedEl.textContent = '';
+    var i = 0;
+    (function typeStep(){
+      if (i <= fullText.length) {
+        typedEl.textContent = fullText.slice(0, i);
+        i++;
+        setTimeout(typeStep, 55);
+      } else {
+        typedEl.style.borderRight = 'none';
+      }
+    })();
+  } else {
+    typedEl.style.borderRight = 'none';
+  }
+
+  // Reveal-on-scroll for sections
+  var revealEls = document.querySelectorAll('.reveal');
+  if (prefersReduced) {
+    revealEls.forEach(function(el){ el.classList.add('in-view'); });
+  } else {
+    var revealObs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          revealObs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach(function(el){ revealObs.observe(el); });
+  }
+
+  // Liquid-glass cursor tracking: specular highlight + subtle 3D tilt
+  if (!prefersReduced && window.matchMedia('(hover: hover)').matches) {
+    var glassEls = document.querySelectorAll('.glass');
+    glassEls.forEach(function(el){
+      el.addEventListener('mousemove', function(e){
+        var r = el.getBoundingClientRect();
+        var x = ((e.clientX - r.left) / r.width) * 100;
+        var y = ((e.clientY - r.top) / r.height) * 100;
+        el.style.setProperty('--px', x + '%');
+        el.style.setProperty('--py', y + '%');
+        el.style.setProperty('--rx', ((0.5 - y / 100) * 5) + 'deg');
+        el.style.setProperty('--ry', ((x / 100 - 0.5) * 5) + 'deg');
+      });
+      el.addEventListener('mouseleave', function(){
+        el.style.setProperty('--rx', '0deg');
+        el.style.setProperty('--ry', '0deg');
+      });
+    });
+  }
+
+  // Hero network diagram (generated once, static positions)
+  (function buildNet(){
+    var lineG = document.getElementById('netLines');
+    var dotG = document.getElementById('netDots');
+    var pts = [];
+    var cols = 4, rows = 6;
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) {
+        pts.push({
+          x: 40 + c * 140 + (r % 2 ? 40 : 0) + (Math.random()*20-10),
+          y: 20 + r * 95 + (Math.random()*20-10)
+        });
+      }
+    }
+    pts.forEach(function(p, i){
+      pts.forEach(function(q, j){
+        if (j <= i) return;
+        var d = Math.hypot(p.x - q.x, p.y - q.y);
+        if (d < 150 && Math.random() > 0.55) {
+          var line = document.createElementNS('http://www.w3.org/2000/svg','line');
+          line.setAttribute('x1', p.x); line.setAttribute('y1', p.y);
+          line.setAttribute('x2', q.x); line.setAttribute('y2', q.y);
+          lineG.appendChild(line);
+        }
+      });
+    });
+    pts.forEach(function(p){
+      var c = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      c.setAttribute('cx', p.x); c.setAttribute('cy', p.y);
+      c.setAttribute('r', 2 + Math.random()*2);
+      dotG.appendChild(c);
+    });
+  })();
+</script>
+
+</body>
+</html>
